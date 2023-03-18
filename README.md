@@ -60,3 +60,71 @@ If above command displays the compiler version such as Version 4.8.2, you can be
 From the Command Line Prompt, if you want to upgrade / downgrade Typescript to any specific version (e.g. 3.0, 3.8, 4.8.2 etc.), execute the below command:
 
 `npm install -g typescript@3.0`
+
+## Compiling TypeScript to JavaScript
+
+What do we mean by compiling TypeScript? It means creating Typescript and then compiling it down to JavaScript so that it can be readable by the browsers.
+
+From the command Line prompt, type the following command:
+
+`tsc <name of typescript file>`
+
+e.g `tsc script.ts`
+
+`tsc` means the `TypeScript compiler`. The `tsc` comes bundled with typescript during installation via npm (`npm install -g typescript`).
+
+_NOTE_: To avoid any challenges while during compilation, make you're inside the right directory in your file setup.
+
+## Writing Your First TypeScript File
+
+Create a file in your directory; you can give it any name or simply name it `script.ts` (`.ts` is the file extension for TypeScript), Then write some code in the file such as:
+
+```Js
+
+// script.ts
+const country = 'Togo';
+console.log(country);
+
+const player = 'Gary';
+
+console.log(player);
+```
+
+If you were to check the output of this code in the console of your browser, you'll discover that you won't see any output in the console because the browser cannot read TypeScript, to compile down to JavaScript, you can do it different ways by running the following command in your terminal:
+
+1. `tsc script.ts script.js`
+
+Here, you're saying that the `script.ts` should compile to a JavaScript file called `script.js`.
+
+2. `tsc script.ts`
+
+In the second case, you only put the `script.ts` file, and once you run the file and look in our current directory, we’ll see a `script.js` file next to `script.ts` automatically created for us. That’s the output from our script.ts file after tsc compiles or transforms it into a plain JavaScript file. And if we check the contents, we’ll see that it looks similar to what we wrote:
+
+```Js
+
+//script.js
+var country = 'Togo';
+console.log(country);
+var player = 'Gary';
+console.log(player);
+
+```
+
+## Why we see `var` in the JavaScript file and not `const` or `let`.
+
+We're seeing var instead of const because `const` is still to some extent, considered as a new feature in JavaScript and not absolutely supported across all browsers. Hence, we have the `var` (older version) which is supported by most browsers.
+
+## What happens if both the script.ts and script.js are opened in your Text editor?
+
+You'll discover that certain portions in the `script.ts` file is underlined to indicate an error in the file. You may see an error such as: `Cannot redeclare block-scoped variable 'country'.ts(2451)`
+
+This error doesn't really matter since the browser will not read the `script.ts` file in the first place.
+The error is appearing because both files are opened at the same time. In order not to see the error again, you simply close one of the file, in this case, the `script.js` file.
+
+## How To Automatically Watch the changes in the script.ts file.
+
+So far we've been manually doing the compilation to JavaScript when we run: `tsc script.ts`. To automatically watch the changes once we make changes to the `script.ts` file we run:
+
+`tsc script.ts -w`
+
+The `-w` means `watch`; and recompile to script.js once any change is noticed in the `script.ts` file.

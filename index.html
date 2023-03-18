@@ -4,14 +4,50 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Document</title>
   </head>
   <body>
-    <header>
-      <h1>Student Information</h1>
-    </header>
-    <main>
-      <script src="classes.js"></script>
+    <main class="wrapper">
+      <header>
+        <h1>Alumni Information</h1>
+      </header>
+
+      <!-- output list -->
+      <ul class="item-list"></ul>
     </main>
+
+    <section>
+      <form class="new-item-form">
+        <div class="field">
+          <label>Name:</label>
+          <input type="text" id="details" />
+        </div>
+        <div class="field">
+          <label>Your Department:</label>
+          <select id="type">
+            <option value="invoice">Department</option>
+            <option value="science">Science</option>
+            <option value="commercial">Commercial</option>
+            <option value="art">Art</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Year of Graduation:</label>
+          <input type="number" id="tofrom" />
+        </div>
+        <div class="field">
+          <label>Occupation:</label>
+          <input type="text" id="details" />
+        </div>
+        <div class="field">
+          <label>DOB:</label>
+          <input type="date" id="amount" />
+        </div>
+        <button>Add</button>
+      </form>
+    </section>
+    <script src="script.js"></script>
+    <script src="classes.js"></script>
   </body>
 </html>
