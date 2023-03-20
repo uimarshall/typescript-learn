@@ -128,3 +128,102 @@ So far we've been manually doing the compilation to JavaScript when we run: `tsc
 `tsc script.ts -w`
 
 The `-w` means `watch`; and recompile to script.js once any change is noticed in the `script.ts` file.
+
+## Types Basic
+
+Programming is all about Data-Types and Algorithm.
+
+When we declare a variable and assign to it a value; The value we've assigned is always of a certain type either in JavaScript or any other programming language. For example, a `string` or a `number`.
+
+`The major difference between TypeScript and JavaScript is that TypeScript uses 'strict' types while JavaScript does not`.
+
+This means if we define a variable as String such as: `let name = "Fred"` in TypeScript, it will always remain a string and cannot be changed to other types later.
+
+> Let's do a little practice:
+
+```Js
+//script.ts file
+let student = 'Asher';
+let score = 10;
+let isTutor = false;
+
+student = 5; //this will throw an error.
+
+// However, we can change the student variable to hold another value which is a String
+student = 'Rooney';
+
+```
+
+We can see that a value of type String is assigned to the `student` variable. If we try to change it by assigning a value of `5` (a `number`) to it we would see an error such as: `Type 'number' is not assignable to type 'string'.ts(2322)` . You can see this error by hovering over `student = 5` in your text editor.
+
+However, we can change the student variable to hold another value which is a String.
+
+e.g.
+
+```js
+student = 'Rooney';
+```
+
+> In summary, we can change the values and not the types.
+
+The same thing is applicable to all other data types.
+
+Note that, we don't have to explicitly or specifically define the type a variable will be during variable declaration. Typescript uses Inference or infer the type that we use based on the value we assign when we declare a variable.
+
+We can just assign a variable a value and Typescript infer its type.
+
+## Passing a variable as an argument to a function.
+
+We can declare what type of variable we expect to be passed into a function as an argument.
+
+### CASE 1:
+
+If no type is specified in the argument passed into the function, the program will compile but will not give the expected result. (You can check your console):
+
+```Js
+// script.ts
+
+const findSquareRoot = (value) => {
+  return Math.sqrt(value);
+};
+
+console.log(findSquareRoot('hello')); //this will return a NAN
+
+```
+
+If you check your console in the browser, you will see that the output is a NAN, indicating that it is not the correct output expected.
+
+### CASE 2:
+
+To declare what type of variable you want to pass, you put a `colon`, then specify the `type`.
+
+```js
+// script.ts
+
+// If you compile this code using `tsc script.ts` on your terminal, It will throw an error such as:
+// "error TS2345: Argument of type 'string' is not assignable to parameter of type 'number'".
+
+const findSquareRoot = (value: number) => {
+  return Math.sqrt(value);
+};
+
+console.log(findSquareRoot('hello'));
+```
+
+### CASE 3
+
+```js
+// script.ts
+
+// We pass in the correct argument here.
+
+const findSquareRoot = (value: number) => {
+  return Math.sqrt(value);
+};
+
+console.log(findSquareRoot(9)); //This will output 3
+```
+
+### What you should take away
+
+TypeScript allows us to do type-checking during development which enables us to write cleaner code that is bug free. It helps us eliminate the frustrations of runtime error.
