@@ -227,3 +227,70 @@ console.log(findSquareRoot(9)); //This will output 3
 ### What you should take away
 
 TypeScript allows us to do type-checking during development which enables us to write cleaner code that is bug free. It helps us eliminate the frustrations of runtime error.
+
+## Primitive Types
+
+Since TypeScript extends JavaScript, meaning TypeScript can do anything that can be done with JavaScript, and still adds extra features to it.
+
+It follows that TypeScript supports some basic types (primitives) you may already know in JavaScript.
+
+There are three main primitives in JavaScript and TypeScript.
+
+`boolean` - This entails `true` or `false` values.
+`number` - This entails integers or whole numbers and floating point values.
+`string` - This entails a sequence or strings of characters or text values such as "Hello world".
+
+## How the Types are Assigned
+
+When creating a variable, there are two main ways TypeScript assigns a type:
+
+1. Explicit
+2. Implicit
+
+### Explicit Type
+
+In Explicit type, the data type assigned to a variable is defined or explicitly stated during the variable declaration:
+
+```js
+// script.ts
+let profession: string = 'programmer'; // the Type annotation here is a 'string'
+profession = 50; // re-assigning a Type 'number' will result in an error
+```
+
+Any attempt to reassign another type other a String in this case will result in an error.
+
+If we don't want to assign a value during the variable declaration, we can still define the type explicitly and assign the value later.
+Example:
+
+```js
+// script.ts
+let language: string;
+let followers: number;
+let isBeginner: boolean;
+
+language = 'TypeScript';
+
+followers = true; //TypeScript will throw an error if data types do not match.
+```
+
+Explicit assignment helps us to catch bugs or errors in our code during development and not at runtime.
+
+### Implicit Type
+
+In Implicit assignment, TypeScript infers the type based on the value assigned to a variable.
+
+### The Problem With Implicit Type
+
+The challenges using Implicit type is that JavaScript will not throw an error for mismatched types and this could results in runtime errors because the code will run normally if written in JavaScript.
+
+Example:
+
+```Js
+let club = 'Young boys'; // inferred to type string
+club = 20; // JavaScript will not throw an error
+
+```
+
+NOTE:
+
+`The type names String, Number, and Boolean (starting with capital letters) are legal, but refer to some special built-in types that will very rarely appear in your code. Always use string, number, or boolean for types.`
