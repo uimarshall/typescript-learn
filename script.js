@@ -7,6 +7,6 @@ var isTutor = false;
 student = 'Rooney';
 // A function to returns the square root of a number
 var findSquareRoot = function (value) {
-    return Math.sqrt(value);
+  return Math.sqrt(value);
 };
 console.log(findSquareRoot(9)); //This will output 3
