@@ -60,3 +60,38 @@ user = {
     name: 'Doe',
     email: 'doe@email.com'
 };
+// EXPLICIT DECLARATIONS
+var subject;
+var count;
+var isAdmin;
+// Initialize array with array items of string type
+var fruits;
+// Initialize an empty array 
+var protein = [];
+// UNION
+// Union type can be used to define multiple types in an Array. We use parenthesis to separate the unions when working with an array.
+// Example: 
+var mixedArray = [];
+mixedArray.push("hello world");
+mixedArray.push(2);
+mixedArray.push(true); // Compiler error: Argument of type 'boolean' is not assignable to parameter of type 'string | number'.ts(2345)
+console.log(mixedArray);
+// UNION IN A STRING
+var alphanumeric;
+alphanumeric = "10101";
+alphanumeric = "0123456789abcdef";
+alphanumeric = true; //Compiler error: Type 'boolean' is not assignable to type 'string | number'.
+// OBJECT
+var car;
+car = {
+    name: "Camry",
+    color: "black"
+};
+car = []; // This works because, an Array is also considered to be an object.
+// To exclude an array being considered to be an object, we explicitly declare the object as:
+var product = {
+    name: "phone",
+    price: 30
+};
+// NB: The object must contain properties, otherwise it will can still set the variable(product) to be equal to an Array.
+product = []; //Compiler error: Type 'never[]' is missing the following properties from type '{ name: string; price: number; }': name, price ts(2739)
