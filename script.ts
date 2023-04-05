@@ -72,7 +72,7 @@ user.name = 40; // Error: Type 'number' is not assignable to type 'string'.ts(23
 
 // No Additional property can be added to the original object.
 
-user.isOnline: false //Error: Property 'isOnline' does not exist on type '{ name: string; email: string; age: number; }'.ts(2339)
+user.isOnline: false; //Error: Property 'isOnline' does not exist on type '{ name: string; email: string; age: number; }'.ts(2339)
 
 // *** It can be updated to a new object*****
 
@@ -93,3 +93,49 @@ user = {
   // Error: Property 'age' is missing in type '{ name: string; email: string; }' but required in type '{ name: string; email: string; age: number; }'.ts(2741)
 } 
 
+// EXPLICIT DECLARATIONS
+const subject: string
+let count: number
+let isAdmin: boolean
+// Initialize array with array items of string type
+let fruits: string[]
+// Initialize an empty array 
+let protein: string[] = []
+
+// UNION
+// Union type can be used to define multiple types in an Array. We use parenthesis to separate the unions when working with an array.
+// Example: 
+
+
+let mixedArray: (string|number)[] = []
+mixedArray.push("hello world")
+mixedArray.push(2)
+mixedArray.push(true)// Compiler error: Argument of type 'boolean' is not assignable to parameter of type 'string | number'.ts(2345)
+console.log(mixedArray);
+
+// UNION IN A STRING
+
+let alphanumeric: string|number;
+alphanumeric ="10101"
+alphanumeric= "0123456789abcdef"
+alphanumeric= true //Compiler error: Type 'boolean' is not assignable to type 'string | number'.
+
+// OBJECT
+
+let car: object;
+car = {
+  name: "Camry",
+  color: "black",
+}
+
+car = [] // This works because, an Array is also considered to be an object.
+
+// To exclude an array being considered to be an object, we explicitly declare the object as:
+
+let product = {
+  name: "phone",
+  price:30
+}
+
+// NB: The object must contain properties, otherwise it will can still set the variable(product) to be equal to an Array.
+product = [] //Compiler error: Type 'never[]' is missing the following properties from type '{ name: string; price: number; }': name, price ts(2739)
