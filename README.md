@@ -294,3 +294,72 @@ club = 20; // JavaScript will not throw an error
 NOTE:
 
 `The type names String, Number, and Boolean (starting with capital letters) are legal, but refer to some special built-in types that will very rarely appear in your code. Always use string, number, or boolean for types.`
+
+# SPECIAL TYPES
+
+1. ARRAYS
+
+## Explicitly declaring an array
+
+````js
+const names: string[] = []; // This can only accept strings as array items.
+names.push("Peter"); // no compiler error
+names.push(8); // Error: Argument of type 'number' is not assignable to parameter of type 'string'.
+
+## The Different Ways An Array Works using Type Inference
+
+TypeScript can infer the type of an array if it has values or array items.
+
+> Initialize An Array With Only One type as array items or list items.
+> e.g:
+
+```js
+// Initialize the array with string types
+let languages = ['Ruby', 'Python', 'TypeScript'];
+````
+
+If we initialize an array to contain only one type as array items, TypeScript will not allow us to add any other data type to array. In the example above, we can only add strings and not any other data type such as: number, boolean etc.
+
+> Initialize An Array With Mixed type as array items or list items.
+
+```js
+// Initialize the array with mixed types
+let mixedTypes = ['Ruby', 3, true];
+```
+
+Typescript will permit us to add other data types if we declare the array with mixed types.
+
+> NB: If we declare a variable to be a particular type, we cannot change that type.
+
+The `Readonly` keyword
+The readonly keyword can prevent arrays from being altered.
+
+```js
+const names: readonly string[] = ["John"];
+names.push("Doe"); // Error: Property 'push' does not exist on type 'readonly string[]'.
+```
+
+# OBJECTS
+
+```js
+let user = {
+  name: 'John',
+  email: 'john@email.com',
+  age: 30,
+};
+```
+
+All the properties `(name, email, age)` of the object can be updated provided their values matches the types as declared in the object.
+
+```js
+user.name = 'Doe'; // no compiler error.
+user.name = 40; // Error: Type 'number' is not assignable to type 'string'.ts(2322)
+```
+
+> No Additional property can be added to the original object.
+
+```js
+user.isOnline: false //Error: Property 'isOnline' does not exist on type '{ name: string; email: string; age: number; }'.ts(2339)
+```
+
+The property `isOnline` does not exist on the original object (user). Once we've defined the object we cannot add additional property unto it.
