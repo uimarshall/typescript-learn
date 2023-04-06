@@ -60,6 +60,27 @@ user = {
     name: 'Doe',
     email: 'doe@email.com'
 };
+// Optional Properties
+// Optional properties are properties that don't have to be defined in the object definition.
+// Example: without an optional property
+// The lines of code below will output this error: Property 'age' is missing in type '{ name: string; }' but required in type '{ name: string; age: number; }'
+var profile = {
+    name: "Dave"
+};
+profile.age = 18;
+// Example with an optional property
+var country = {
+    name: "Brazil"
+};
+country.population = 100000;
+console.log(country);
+// Index Signatures
+// Index signatures can be used for objects without a defined list of properties.
+// Example
+var person = {};
+person.age = 45; // no error
+console.log(person);
+person.name = "Anselm"; // Error: Type 'string' is not assignable to type 'number'.
 // EXPLICIT DECLARATIONS
 var subject;
 var count;
@@ -95,3 +116,19 @@ var product = {
 };
 // NB: The object must contain properties, otherwise it will can still set the variable(product) to be equal to an Array.
 product = []; //Compiler error: Type 'never[]' is missing the following properties from type '{ name: string; price: number; }': name, price ts(2739)
+// ANY
+var counter = 1;
+counter = true;
+console.log(counter);
+counter = "hello world";
+console.log(counter);
+// Array
+var arr = [];
+arr.push(true);
+arr.push(5);
+arr.push("hi");
+console.log(arr);
+// Objects
+var obj;
+obj = { value1: "Ann", value2: "Fred" };
+console.log(obj);
