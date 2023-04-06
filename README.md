@@ -364,6 +364,48 @@ user.isOnline: false //Error: Property 'isOnline' does not exist on type '{ name
 
 The property `isOnline` does not exist on the original object (user). Once we've defined the object we cannot add additional property unto it.
 
+# Optional Properties
+
+Objects are used to store data values in `key:value` pairs. The key is usually referred to as the property/properties of the object. Hence, Optional properties are properties that don't have to be defined in the object definition.
+
+> Example: without an optional property
+
+The lines of code below will output this error: `Property 'age' is missing in type '{ name: string; }' but required in type '{ name: string; age: number; }'`
+
+```js
+// script.ts file
+const profile: { name: string, age: number } = {
+  name: 'Dave',
+};
+profile.age = 18;
+```
+
+> Example with an optional property.
+
+```js
+// script.ts file
+const country: { name: string, population?: number } = {
+  // no error
+  name: 'Brazil',
+};
+country.population = 100000;
+console.log(country);
+```
+
+## Index Signatures
+
+Index signatures can be used for objects without a defined list of properties.
+
+> Example
+
+```js
+const person: { [index: string]: number } = {};
+person.age = 45; // no error
+console.log(person);
+
+person.name = 'Anselm'; // Error: Type 'string' is not assignable to type 'number'.
+```
+
 # EXPLICIT TYPES DECLARATIONS
 
 Once you declare a variable explicitly to be a certain type, you cannot later assign to it a value of another type.
@@ -443,3 +485,41 @@ let product = {
 // NB: The object must contain properties, otherwise it will can still set the variable(product) to be equal to an Array.
 product = []; //Compiler error: Type 'never[]' is missing the following properties from type '{ name: string; price: number; }': name, price ts(2739)
 ```
+
+## SPECIAL TYPES
+
+1. ANY
+
+As the name implies; whenever we use ANY in a certain variable declaration, we're saying the variable can hold any `type`, be it boolean, string, numbers etc.
+
+A variable that has `any` as a type annotation, might be defined or declared as a string initially and later change it to a number in the future without any noticeable error.
+
+`any` is a type that disables type checking and practically allows all known types to be used.
+
+> NOTE: It is advisable that you avoid using `ANY` at "any" cost...
+
+```js
+// script.ts file
+let counter: any = 1;
+counter = true;
+console.log(counter);
+counter = 'hello world';
+console.log(counter);
+
+const arr: any[] = [];
+arr.push(true);
+arr.push(5);
+arr.push('hi');
+console.log(arr);
+
+// Objects
+let obj: { value1: any, value2: any };
+obj = { value1: 'Ann', value2: 'Fred' };
+console.log(obj);
+```
+
+Since we can change the value to anything, It defeats the essence of using TypeScript in the first place except on some rare occasions. It does indicate compile errors during development with regard to types, no hints on what type a value assigned to a variable ought to be.
+
+// TODO
+
+When Can We use ANY?

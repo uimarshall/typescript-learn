@@ -91,7 +91,38 @@ user = {
   email: 'doe@email.com',
   // age: 100, 
   // Error: Property 'age' is missing in type '{ name: string; email: string; }' but required in type '{ name: string; email: string; age: number; }'.ts(2741)
-} 
+}
+
+// Optional Properties
+// Optional properties are properties that don't have to be defined in the object definition.
+
+// Example: without an optional property
+
+// The lines of code below will output this error: Property 'age' is missing in type '{ name: string; }' but required in type '{ name: string; age: number; }'
+
+const profile: { name: string, age: number } = { 
+  name: "Dave",
+};
+profile.age = 18;
+
+// Example with an optional property
+const country: { name: string, population?: number } = { // no error
+  name: "Brazil"
+};
+country.population = 100000;
+console.log(country);
+
+
+
+// Index Signatures
+// Index signatures can be used for objects without a defined list of properties.
+
+// Example
+const person: { [index: string]: number } = {};
+person.age = 45; // no error
+console.log(person);
+
+person.name = "Anselm"; // Error: Type 'string' is not assignable to type 'number'.
 
 // EXPLICIT DECLARATIONS
 const subject: string
@@ -139,3 +170,24 @@ let product = {
 
 // NB: The object must contain properties, otherwise it will can still set the variable(product) to be equal to an Array.
 product = [] //Compiler error: Type 'never[]' is missing the following properties from type '{ name: string; price: number; }': name, price ts(2739)
+
+// ANY
+
+let counter: any = 1
+counter = true
+console.log(counter);
+counter = "hello world"
+console.log(counter);
+
+// Array
+const arr: any[] = []
+arr.push(true)
+arr.push(5)
+arr.push("hi")
+console.log(arr);
+
+// Objects
+let obj: {value1: any, value2: any}
+obj = {value1: "Ann", value2: "Fred"}
+console.log(obj);
+
