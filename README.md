@@ -539,3 +539,22 @@ HOW TO COMPILE THE .TS FILES FROM THE `SRC` FOLDER INTO THE `PUBLIC` FOLDER.
 On your command prompt, type:
 `tsc --init`.
 This command, will create a `tsconfig.json` file for us.
+
+# EXPLAINING THE DIFFERENT CONFIGURATIONS OPTIONS INSIDE THE TSCONFIG.JSON FILE.
+
+`"target": "es2016",` - means the output of the js file after the typescript must have compiled.
+
+`"rootDir": "./src",`- means all our root directory file should be inside the `src` folder.
+`"outDir": "./public"`- Is where everything inside the `rootDir` is compiled to.
+
+HOW TO PREVENT OTHER .TS FILES OUTSIDE THE SRC FOLDER FROM COMPILING INTO PUBLIC FOLDER.
+
+If we leave our configuration the way it is, it means even though we create other `.ts` files outside the `src` folder, it will still compile. In order to prevent this we add `"include": ["src"]` to the end of the `tsconfig.json` file after the `compilerOptions` object. This means we're only going to compile things inside the `src` folder.
+
+Example:
+If we create a file `greet.js` inside the `src` folder, it will compile to `greet.js` inside the `public` folder.
+
+```js
+// greet.ts
+console.log('hello world!');
+```
