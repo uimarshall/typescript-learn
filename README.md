@@ -520,6 +520,41 @@ console.log(obj);
 
 Since we can change the value to anything, It defeats the essence of using TypeScript in the first place except on some rare occasions. It does indicate compile errors during development with regard to types, no hints on what type a value assigned to a variable ought to be.
 
-// TODO
+# // TODO
 
 When Can We use ANY?
+
+# INTEGRATING TYPESCRIPT INTO YOUR PROJECT & TSCONFIG
+
+## Configuring The Compiler
+
+Whenever, we integrate typescripts into our project we want to enforce type to write cleaner code and bug free. One configuration that is integral to this is the `tsconfig` file.
+
+When creating a project we usually have a lot of files that are are written in typescript, while some are in JavaScript as well as some other file. It is important we separate all these files.
+The Typescript file, typically goes to the `src` folder because the TypeScript acts as a devDependencies for us (we use Ts during development), while JavaScript files goes to the `public` or `dist` folder. The JavaScript goes into public folder because, after the Typescript has compiled into JavaScript, it is then deployed into some servers which we later serve to the public.
+Typically, in our folder structure, we see things like `index.html`, the `css` files and `JavaScript` going inside the `public folder`, while the `src` folder houses our source code (stuffs we don't want to deploy).
+
+HOW TO COMPILE THE .TS FILES FROM THE `SRC` FOLDER INTO THE `PUBLIC` FOLDER.
+
+On your command prompt, type:
+`tsc --init`.
+This command, will create a `tsconfig.json` file for us.
+
+# EXPLAINING THE DIFFERENT CONFIGURATIONS OPTIONS INSIDE THE TSCONFIG.JSON FILE.
+
+`"target": "es2016",` - means the output of the js file after the typescript must have compiled.
+
+`"rootDir": "./src",`- means all our root directory file should be inside the `src` folder.
+`"outDir": "./public"`- Is where everything inside the `rootDir` is compiled to.
+
+HOW TO PREVENT OTHER .TS FILES OUTSIDE THE SRC FOLDER FROM COMPILING INTO PUBLIC FOLDER.
+
+If we leave our configuration the way it is, it means even though we create other `.ts` files outside the `src` folder, it will still compile. In order to prevent this we add `"include": ["src"]` to the end of the `tsconfig.json` file after the `compilerOptions` object. This means we're only going to compile things inside the `src` folder.
+
+Example:
+If we create a file `greet.js` inside the `src` folder, it will compile to `greet.js` inside the `public` folder.
+
+```js
+// greet.ts
+console.log('hello world!');
+```
