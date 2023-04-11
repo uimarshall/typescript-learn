@@ -191,3 +191,72 @@ let obj: {value1: any, value2: any}
 obj = {value1: "Ann", value2: "Fred"}
 console.log(obj);
 
+// Functions
+
+// Declare a function type
+let prayer: Function
+
+prayer = () => {
+  console.log("So help me God");
+  
+}
+
+// Passing parameters into a functions
+
+let sum = (a: number, b: number) => {
+  console.log(a + b);
+
+}
+
+sum(3, 5) //output 8
+
+// Passing Optional parameters into functions
+
+// We pass an optional parameter by appending the ? sign to the parameter in question.
+
+let summation = (a: number, b: number, c?: number | string) => {
+  console.log(a + b);
+  console.log(c); // we will have undefined as output if a third parameter is not passed when we call the function.
+  
+  
+};
+
+summation(3, 7) //output 10
+
+// Another way to handle an optional parameter is to pass in a default value and remove the ? sign
+
+// The below function will output 9 if we log c to the console (i. e. console.log(c)). 9 being the default value; but If we pass 40 as the third parameter to the function when it is called, it will output 20 instead if we log `c` to the console.
+
+let summation2 = (a: number, b: number, c: number | string = 9) => {
+  console.log(a + b);
+  console.log(c); // This will now output 9 and not undefined.
+  
+  
+};
+
+summation2(3, 7) //output 10
+
+// Infer the return value from the function
+
+let multiply = (a: number, b: number): number => {
+  return a * b;
+};
+
+let products = multiply(2, 3)
+
+// Void type
+
+// When we don't return anything inside the function, it returns  a Void. It represents the complete absence of a return value.
+
+// When it compiles to JavaScript, the value is `undefined`.
+
+let subtract = (a: number, b: number): void =>{
+  console.log(a-b);
+  
+}
+
+
+
+
+
+
