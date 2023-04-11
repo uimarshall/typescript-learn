@@ -171,13 +171,3 @@ let products = multiply(2, 3);
 let subtract = (a, b) => {
     console.log(a - b);
 };
-NOTE: A;
-function whose() { }
-declared;
-'void';
-nor;
-'any';
-must;
-return a;
-value.
-;

@@ -255,7 +255,7 @@ let subtract = (a: number, b: number): void =>{
   
 }
 
-NOTE: A function whose declared type is neither 'void' nor 'any' must return a value.
+
 
 
 
