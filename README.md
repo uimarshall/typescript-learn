@@ -558,3 +558,93 @@ If we create a file `greet.js` inside the `src` folder, it will compile to `gree
 // greet.ts
 console.log('hello world!');
 ```
+
+## FUNCTIONS
+
+## How To Declare a function type
+
+```js
+let prayer: Function;
+
+prayer = () => {
+  console.log('So help me God');
+};
+```
+
+## Passing parameters into a functions
+
+```js
+let sum = (a: number, b: number) => {
+  console.log(a + b);
+};
+
+sum(3, 5); //output 8
+```
+
+## Passing Optional parameters into functions
+
+We pass an optional parameter by appending the `?` sign to the parameter in question.
+
+```js
+let summation = (a: number, b: number, c?: number | string) => {
+  console.log(a + b);
+  console.log(c); // we will have undefined as output if a third parameter is not passed when we call the function.
+};
+
+summation(3, 7); //output 10
+```
+
+Another way to handle an optional parameter is to pass in a default value and remove the ? sign.
+
+The below function will output `9` if we `log c` to the console (i. e. `console.log(c)`). 9 being the default value; but If we pass `40` as the third parameter to the function when it is called, it will output 20 instead if we log `c` to the console.
+
+```js
+let summation2 = (a: number, b: number, c: number | string = 9) => {
+  console.log(a + b);
+  console.log(c); // This will now output 9 and not undefined.
+};
+
+summation2(3, 7); //output 10
+```
+
+> NOTE: When passing an optional parameter, you must ensure that your required parameters come first while the optional parameter comes last. In the above code example, we see that parameter `c` comes last.
+
+Otherwise, the arguments (e.g. `summation2(3, 7, 12)`; ) will get mixed up.
+
+# TypeScript Can Infer The return value of a Function.
+
+```js
+// Infer the return value from the function
+
+let multiply = (a: number, b: number) => {
+  return a * b;
+};
+
+let products = multiply(2, 3);
+```
+
+When you hover over `products`, it will tell you that `products` is a number.
+
+If we want to explicitly return a number, we write the code as:
+
+```js
+let multiply = (a: number, b: number): number => {
+  return a * b;
+};
+
+let products = multiply(2, 3);
+```
+
+## Void type
+
+When we don't return anything inside the function, it returns a Void. It represents the complete absence of a return value.
+
+When it compiles to JavaScript, the value is `undefined`.
+
+```js
+let subtract = (a: number, b: number): void => {
+  console.log(a - b);
+};
+```
+
+> NOTE: A function whose declared type is neither 'void' nor 'any' must return a value.
