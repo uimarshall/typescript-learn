@@ -648,3 +648,103 @@ let subtract = (a: number, b: number): void => {
 ```
 
 > NOTE: A function whose declared type is neither 'void' nor 'any' must return a value.
+
+# Working with Union Types
+
+Union Types comes into play when working with Logical Operator `OR`, commonly employed in Booleans.
+
+`OR` means either `this` or `that`.
+It’s easy to provide a value matching a union type - simply provide a type matching any of the union’s members.
+
+The Symbol for Union in TypeScript is the `|` symbol.
+
+TypeScript will only allow an operation if it is valid for every member of the union.
+For example, if you have the union `string | number`, you can’t use methods that are only available on string:
+
+```js
+let getAlphaNumeric = (password: number | string) => {
+  console.log(password.toLowerCase());
+};
+```
+
+The above code will throw an error: `Property 'toLowerCase' does not exist on type 'string | number'.
+Property 'toLowerCase' does not exist on type 'number'`.
+
+## TypeScript Type Aliases
+
+First, what is an `Alias`?
+An alias can be any name used in place of ones birth name.
+
+Type Aliases allow defining types with a custom name (an Alias).
+
+Type Aliases can be used for primitives like `string` or more complex types such as `objects` and `arrays`.
+
+Again, to facilitate a clearer understanding, think of `Aliases` as reusable codes.
+
+`Aliases` comes in handy when working with `unions`.
+
+When working with functions and specifying the type for the parameters passed to the function, It could get cumbersome especially with object types.
+
+# TYPE ALIASES
+
+## The syntax for a type alias is:
+
+```js
+type AliasName = {
+  x: number,
+  y: number,
+};
+```
+
+> SAMPLE CODE
+
+```js
+let article = (id: number | string, author: string) => {
+  console.log(`This article: ${id} was written by ${author}`);
+};
+```
+
+```js
+let order = (user: { name: string, id: number | string }) => {
+  console.log(`${user.name}: placed an order with the id: ${user.id}`);
+};
+```
+
+Consider the two functions above, they have similar type specifications in the params they take in.We could even have more functions like this in our code. In such cases, it is better to use alias to make our code more cleaner and readable instead of writing the same code over and over again.
+
+## TRANSFORMING THE CODE USING ALIASES
+
+```js
+type alphanumeric = number | string;
+type objParamsWithNameAndId = { name: string, id: alphanumeric };
+```
+
+## We can create a file to hold our `Aliases`.
+
+We can then replace `number | string;` with `alphanumeric` anywhere in the code.
+
+```js
+let article = (id: alphanumeric, author: string) => {
+  console.log(`This article: ${id} was written by ${author}`);
+};
+```
+
+```js
+let order = (user: { name: string, id: alphanumeric }) => {
+  console.log(`${user.name}: placed an order with the id: ${user.id}`);
+};
+```
+
+## FURTHER IMPROVEMENTS ON THE SAME CODE
+
+```js
+let article = (id: alphanumeric, author: string) => {
+  console.log(`This article: ${id} was written by ${author}`);
+};
+```
+
+```js
+let order = (user: objParamsWithNameAndId) => {
+  console.log(`${user.name}: placed an order with the id: ${user.id}`);
+};
+```
