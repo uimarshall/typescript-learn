@@ -255,8 +255,62 @@ let subtract = (a: number, b: number): void =>{
   
 }
 
+// UNION TYPES
+
+let getAlphaNumeric = (password: number | string) => {
+console.log(password.toLowerCase());
+}
+
+// The above code will throw an error: Property 'toLowerCase' does not exist on type 'string | number'.
+  // Property 'toLowerCase' does not exist on type 'number'.
+
+// TYPE ALIASES
+
+// The syntax for a type alias is:
+
+type AliasName = {
+  x: number;
+  y: number;
+};
+  
+// let article = (id: number | string, author: string) => {
+// console.log(`This article: ${id} was written by ${author}`);
+// }
+
+// let order = (user: {name: string, id: number | string} ) => {
+//   console.log(`${user.name}: placed an order with the id: ${user.id}`);
+  
+// }
+
+// Consider the two functions above, they have similar type specifications in the params they take in.We could even have more functions like this in our code. In such cases, it is better to use alias to make our code more cleaner and readable instead of writing the same code over and over again.
+
+// TRANSFORMING THE CODE USING ALIASES
 
 
+type alphanumeric = number | string;
+type objParamsWithNameAndId = {name: string, id: alphanumeric}
 
+// We can create a file to hold our `Aliases`
+// We can then replace `number | string;` with `alphanumeric` anywhere in the code.
+
+// let article = (id: alphanumeric, author: string) => {
+// console.log(`This article: ${id} was written by ${author}`);
+// }
+
+// let order = (user: {name: string, id: alphanumeric} ) => {
+//   console.log(`${user.name}: placed an order with the id: ${user.id}`);
+  
+// }
+
+// FURTHER IMPROVEMENTS ON THE SAME CODE
+
+let article = (id: alphanumeric, author: string) => {
+console.log(`This article: ${id} was written by ${author}`);
+}
+
+let order = (user: objParamsWithNameAndId ) => {
+  console.log(`${user.name}: placed an order with the id: ${user.id}`);
+  
+}
 
 

@@ -171,3 +171,22 @@ let products = multiply(2, 3);
 let subtract = (a, b) => {
     console.log(a - b);
 };
+// UNION TYPES
+let getAlphaNumeric = (password) => {
+    console.log(password.toLowerCase());
+};
+// We can create a file to hold our `Aliases`
+// We can then replace `number | string;` with `alphanumeric` anywhere in the code.
+// let article = (id: alphanumeric, author: string) => {
+// console.log(`This article: ${id} was written by ${author}`);
+// }
+// let order = (user: {name: string, id: alphanumeric} ) => {
+//   console.log(`${user.name}: placed an order with the id: ${user.id}`);
+// }
+// FURTHER IMPROVEMENTS ON THE SAME CODE
+let article = (id, author) => {
+    console.log(`This article: ${id} was written by ${author}`);
+};
+let order = (user) => {
+    console.log(`${user.name}: placed an order with the id: ${user.id}`);
+};
