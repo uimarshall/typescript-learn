@@ -190,3 +190,26 @@ let article = (id, author) => {
 let order = (user) => {
     console.log(`${user.name}: placed an order with the id: ${user.id}`);
 };
+// FUNCTION SIGNATURES
+// Example of function signature
+let simpleMath;
+// The variable `simpleMath` has a signature of `(x: number, y: number) => void;`, therefore, it can be used to hold a similar function in the future which has the same signature as `(x: number, y: number) => void.
+// Example:
+simpleMath = (num_1, num_2) => {
+    console.log(`The addition of num_1 and num_2 is: ${num_1} + ${num_2}`);
+};
+// Example 2
+let appearances;
+appearances = (played_1, played_2, isOnPitch) => {
+    if (isOnPitch === true) {
+        return played_1 + played_2;
+    }
+    else {
+        return played_1;
+    }
+};
+// For Objects
+let profiles;
+profiles = (subscriber) => {
+    console.log(`My name is: ${subscriber.name} and my age is ${subscriber.age}`);
+};

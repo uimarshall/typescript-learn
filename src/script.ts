@@ -313,4 +313,38 @@ let order = (user: objParamsWithNameAndId ) => {
   
 }
 
+// FUNCTION SIGNATURES
+
+// Example of function signature
+let simpleMath: (x: number, y: number) => void;
+
+// The variable `simpleMath` has a signature of `(x: number, y: number) => void;`, therefore, it can be used to hold a similar function in the future which has the same signature as `(x: number, y: number) => void.
+
+// Example:
+simpleMath = (num_1: number, num_2: number ) => {
+  console.log(`The addition of num_1 and num_2 is: ${num_1} + ${num_2}`);
+}
+
+// Example 2
+
+let appearances: (game_1: number, game_2: number, featured: boolean) => number;
+
+appearances = (played_1: number, played_2: number, isOnPitch: boolean) => {
+  if (isOnPitch === true) {
+    return played_1 + played_2
+    
+  } else {
+   return played_1
+  }
+}
+
+// For Objects
+
+let profiles: (user: {name: string, age: number}) => void;
+
+profiles = (subscriber: {name: string, age: number}) => {
+  console.log(`My name is: ${subscriber.name} and my age is ${subscriber.age}`);
+  
+}
+
 

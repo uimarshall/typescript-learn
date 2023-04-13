@@ -748,3 +748,62 @@ let order = (user: objParamsWithNameAndId) => {
   console.log(`${user.name}: placed an order with the id: ${user.id}`);
 };
 ```
+
+# FUNCTION SIGNATURES
+
+It basically describes the general structure of a function, what arguments it takes in and what data it returns.
+
+## Example of function signature
+
+```js
+let simpleMath: (x: number, y: number) => void;
+```
+
+The variable `simpleMath` has a function signature of `(x: number, y: number) => void;`, therefore, it can be used to hold a similar function in the future which has the same signature as `(x: number, y: number) => void`.
+
+## Example:
+
+```js
+simpleMath = (num_1: number, num_2: number) => {
+  console.log(`The addition of num_1 and num_2 is: ${num_1} + ${num_2}`);
+};
+```
+
+What is later assigned to `simpleMath` in the future must follow the same `signature` as originally defined. For instance, it must take `two parameters` of type `number` and if you try to change any of the parameter to a `string` or any other type, it will throw an Error such as: `Type '(num_1: string, num_2: number) => void' is not assignable to type '(x: number, y: number) => void'.
+Types of parameters 'num_1' and 'x' are incompatible.
+Type 'number' is not assignable to type 'string'`.
+
+## Example 2
+
+```js
+// In this case the function signature returns number.
+let appearances: (game_1: number, game_2: number, featured: boolean) => number;
+
+// The exact signature must be matched here, when the variable `appearances` is used in the future.
+
+appearances = (played_1: number, played_2: number, isOnPitch: boolean) => {
+  if (isOnPitch === true) {
+    return played_1 + played_2; // must return a number
+  } else {
+    return played_1; // must return a number
+  }
+};
+```
+
+## For Objects
+
+```js
+let profiles: (user: { name: string, age: number }) => void;
+
+profiles = (subscriber: { name: string, age: number }) => {
+  console.log(`My name is: ${subscriber.name} and my age is ${subscriber.age}`);
+};
+
+// OR Using Aliases
+
+type person = { name: string, age: number };
+
+profiles = (user1: person) => {
+  console.log(`My name is: ${subscriber.name} and my age is ${subscriber.age}`);
+};
+```
